@@ -1,11 +1,10 @@
-// app/page.jsx
 import directus from '../lib/directus';
 import { readItems } from '@directus/sdk'
 
 export default async function Home() {
   
   async function getGlobals() {
-    return directus.request(readItems('global'));
+    return directus.request(readItems('pages'));
   }
   
   const global = await getGlobals();
@@ -17,7 +16,7 @@ export default async function Home() {
         return(
           <>
           <h2>{item.title}</h2>
-          <h4>{item.desc}</h4>
+          <h4>{item.content}</h4>
           </>
         )
       })}
